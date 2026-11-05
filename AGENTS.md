@@ -4,7 +4,7 @@ Contexto del proyecto para los agentes de IA. Léalo antes de cualquier cambio.
 
 ## Proyecto
 
-Plataforma web lúdica de cursos para niños. Curso: (complete). Mecánica: (complete).
+Plataforma web lúdica de cursos para niños. Curso: Ciencia. Mecánica: Memoria de Parejas.
 Roles: docente y niño. El niño entra con código de clase y avatar, sin correo.
 
 ## Stack
