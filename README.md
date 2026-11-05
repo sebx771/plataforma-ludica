@@ -2,9 +2,9 @@
 
 Prototipo de una plataforma web lúdica de cursos para niños, desarrollado con FastAPI.
 
-- **Aprendiz:** Nombre Apellido
-- **Curso y mecánica:** (complete)
-- **Aplicación publicada:** (complete con la URL de Render)
+- **Aprendiz:** Sebastian Coronado
+- **Curso y mecánica:** Ciencia , Memoria de Parejas 
+- **Aplicación publicada:** ([URL de Render](https://plataforma-ludica-27jh.onrender.com))
 
 ## Ejecutar en su equipo
 

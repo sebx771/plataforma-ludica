@@ -10,6 +10,6 @@ MECANICA = "Memoria de Parejas"
 
 # Dirección pública de la aplicación desplegada.
 # Ejemplo: "https://plataforma-ludica-abcd.onrender.com"
-URL_PUBLICA = ""
+URL_PUBLICA = "https://plataforma-ludica-27jh.onrender.com"
 
 VERSION = "0.1.0"
