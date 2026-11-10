@@ -1,0 +1,8 @@
+{
+  "chat.tools.terminal.autoApprove": {
+    "pytest": true,
+    "ruff check": true,
+    "git commit": false,
+    "git push": false
+  }
+}
