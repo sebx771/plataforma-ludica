@@ -1,62 +1,39 @@
 # AGENTS.md
-
-Contexto y convenciones del proyecto para los agentes de IA. Léalo antes de realizar cambios.
+Contexto y convenciones del proyecto. Léalo antes de cambiar código.
 
 ## Proyecto
+Plataforma web lúdica para niños. Curso: Ciencias; mecánica: Memoria de parejas. Roles docente y niño; el niño entra con código de clase y avatar, sin correo. Prototipo con inicio, `/salud`, `/api/proyecto`, `/docs` y PWA; aún sin modelos ni servicios.
 
-Plataforma web lúdica de cursos para niños. Curso: Ciencia. Mecánica: Memoria de Parejas.
-Roles: docente y niño. El niño entra con código de clase y avatar, sin correo.
-
-## Stack
-
-- Python 3.11 o superior, FastAPI, plantillas Jinja2
-- SQLModel con SQLite en desarrollo y PostgreSQL al publicar
-- pytest con TestClient, Ruff
-- GitHub Actions para el CI y Render para el despliegue
-
-## Comandos
-
+## Stack y comandos
+Python >= 3.11 (CI: 3.13), FastAPI, Jinja2, SQLModel, pytest/TestClient y Ruff. SQLite en desarrollo, PostgreSQL al publicar; CI en GitHub Actions y despliegue en Render.
 - Instalar: `pip install -r requirements-dev.txt`
-- Ejecutar: `uvicorn app.main:app --reload`
-- Pruebas: `pytest -v`
-- Estilo: `ruff check .`
+- Ejecutar: `uvicorn app.main:app --reload` (http://127.0.0.1:8000; API en `/docs`)
+- Verificar en orden: `ruff check .` y `pytest -v`; CI también consulta `/salud`.
+- Prueba puntual: `pytest tests/test_inicio.py::test_salud_responde_ok -v` o `pytest -k <nombre> -v`.
+- Hooks: `pre-commit install` (Ruff y `pytest -q`).
+- Entrega: copie `entregas/plantilla.md` a `entregas/semana-N.md` y ejecute `python entregar.py N`.
 
-## Estructura
+## Arquitectura
+- `app/main.py` monta estáticos y routers; `app/rutas/` presenta HTML/API y delega reglas a `app/servicios/`; `app/modelos/` contiene tablas.
+- `app/proyecto.py` es fuente única de aprendiz, curso, mecánica, versión y URL pública; no duplique esos datos.
+- `/sw.js` debe servirse desde la raíz para controlar todo el sitio; PWA e iconos están en `app/static/`.
+- Si cambia un recurso cacheado, actualice la versión de `CACHE` en `sw.js`. `pyproject.toml` configura pytest; no hace falta instalar el paquete.
 
-- `app/rutas/`: reciben la petición y llaman a los servicios; sin regla de negocio
-- `app/servicios/`: regla de negocio, con pruebas propias
-- `app/modelos/`: tablas de SQLModel
-- `app/templates/`: vistas HTML con Jinja2; `app/static/`: estilos, JavaScript y recursos de la PWA
-- `tests/`: pruebas; `tests/aceptacion/`: criterios de la especificación
+## Documentación
 
-## Documentación y plantillas del repositorio
+- Mantenga alineados `README.md`, `specs/spec.md`, `specs/user-flow.md`, `specs/plan.md` y `specs/tasks.md`.
+- Criterios observables de `specs/spec.md` deben tener cobertura en `tests/aceptacion/`; ADR nuevos parten de `specs/adr/0000-plantilla.md`.
+- Guarde prompts como `prompts/semana-N-tema.md`, con objetivo, herramienta/modelo, prompt exacto y resultado.
+- Lea `STATE.md` al iniciar y actualícelo al cerrar.
 
-Mantenga la documentación alineada con el código. Si un cambio modifica el comportamiento, los requisitos, la arquitectura o el flujo de usuario, actualice también los documentos relacionados.
+## Convenciones y entorno
 
-- `README.md`: presentación del proyecto, instrucciones para instalar, ejecutar y verificar, y mapa de carpetas. Manténgalo como punto de entrada actualizado.
-- `specs/spec.md`: contexto del producto, historias, requisitos y criterios de aceptación. Describa resultados observables, no detalles de implementación.
-- `specs/user-flow.md`: pantallas y transiciones para los roles docente y niño. Actualice los diagramas cuando cambie la navegación.
-- `specs/plan.md`: arquitectura, modelo de datos y contrato de API. Registre decisiones importantes por separado en `specs/adr/`, usando `specs/adr/0000-plantilla.md`.
-- `specs/tasks.md`: tareas pequeñas vinculadas a una historia y a su prueba; mantenga actualizado su estado y las referencias a issues cuando correspondan.
-- `tests/aceptacion/README.md`: indica cómo las pruebas de aceptación verifican los criterios de `specs/spec.md`. Las pruebas deben conservar esa trazabilidad.
-- `prompts/README.md`: formato para guardar prompts relevantes. Cada registro debe incluir objetivo, herramienta y modelo, prompt exacto y resultado; use el nombre `semana-N-tema.md`.
-- `entregas/plantilla.md`: cópiela como `entregas/semana-N.md` y complete sus secciones antes de generar la entrega con `python entregar.py N`.
-- `app/templates/`: son plantillas de interfaz Jinja2, no documentos de especificación. Mantenga el HTML accesible y coherente con los requisitos y flujos documentados.
-
-## Convenciones
-
-- Nombres en español, claros y completos.
-- Mantenga las reglas de negocio en servicios y las rutas enfocadas en recibir peticiones y delegar.
-- Cambios pequeños, una tarea por rama; agregue o actualice pruebas para el comportamiento modificado.
-- No duplique información: use el documento correspondiente como fuente y enlace o haga referencia desde los demás cuando sea necesario.
-
-## Qué no hacer
-
-- No escribir claves ni contraseñas en el código: se leen de variables de entorno.
-- No instalar dependencias sin verificar que existen en pypi.org.
-- No modificar ni borrar pruebas para que pasen.
-- No usar datos personales reales.
+- Use nombres claros en español; preserve la separación rutas → servicios → modelos y pruebe todo comportamiento modificado.
+- Cambios pequeños, una tarea por rama. Siga `.github/skills/commit/SKILL.md`; commits Conventional Commits en español, propuestos para aprobación.
+- Use secretos desde `.env` (basado en `.env.example`); nunca suba secretos, bases locales ni PDF de `entregas/`.
+- No modifique pruebas para hacerlas pasar, no use datos personales reales y verifique paquetes en PyPI antes de agregarlos.
+- Revise diferencias con `git diff --ignore-space-at-eol` por posibles finales CRLF. En Windows use `venv/Scripts/`; en Linux/WSL, `.venv`.
+- `requirements-dev.txt` usa `httpx2` porque Starlette lo importa; no lo cambie por `httpx`.
 
 ## Lecciones aprendidas
-
-Cada vez que el agente se equivoque, escriba aquí la regla que evita repetir el error.
+Añada aquí una regla concreta cuando un error revele una lección; `entregar.py` lee esta sección.
