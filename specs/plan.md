@@ -15,6 +15,7 @@ erDiagram
 | Método | Ruta | Descripción | Respuesta |
 | --- | --- | --- | --- |
 | GET | /salud | Estado del servicio | 200 |
+| GET | /api/version | Versión de la aplicación | {"version": "<version>"} |
 
 ## Decisiones
 

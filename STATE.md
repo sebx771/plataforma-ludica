@@ -4,7 +4,7 @@ Estado del proyecto. Léalo al iniciar cada sesión de trabajo y actualícelo al
 
 ## Estado actual
 
-Plantilla creada y desplegada. Página de inicio, /salud y /docs en funcionamiento. AGENTS.md actualizado a menos de 40 líneas con contenido y alineado con el curso y la mecánica indicados.
+Plantilla creada y desplegada. Página de inicio, /salud, /api/version y /docs en funcionamiento. La API devuelve la versión definida en app/proyecto.py; el prompt, objetivo, herramienta/modelo y resultado están registrados en prompts/README.md.
 
 ## Decisiones
 
@@ -14,4 +14,4 @@ Plantilla creada y desplegada. Página de inicio, /salud y /docs en funcionamien
 
 ## Siguiente paso
 
-(complete)
+Mantener la documentación y las pruebas alineadas al incorporar nuevos endpoints.

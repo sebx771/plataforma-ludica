@@ -19,10 +19,20 @@ class DatosProyecto(BaseModel):
     version: str
 
 
+class Version(BaseModel):
+    version: str
+
+
 @router.get("/salud", response_model=Salud, tags=["Sistema"])
 def salud():
     """Indica si la aplicación está en funcionamiento."""
     return Salud(estado="ok")
+
+
+@router.get("/api/version", response_model=Version, tags=["Sistema"])
+def version():
+    """Devuelve la versión de la aplicación."""
+    return Version(version=proyecto.VERSION)
 
 
 @router.get("/api/proyecto", response_model=DatosProyecto, tags=["Proyecto"])
