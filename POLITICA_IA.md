@@ -11,8 +11,9 @@ Me comprometo a cumplir las siguientes reglas durante el desarrollo de este proy
 
 | Comandos que el agente puede ejecutar sin confirmación | Comandos que requieren mi confirmación |
 | --- | --- |
-| (complete) | (complete) |
+| git status | git commit  |
 
-**Nombre:** (complete)
-
-**Fecha:** (complete)
+## Aceptación
+Leí esta política y la acepto. Respondo por todo lo que entrego, lo haya escrito o no la IA.
+Nombre: Sebastian Coronado
+Fecha: 2026-11-23
