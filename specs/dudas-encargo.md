@@ -2,13 +2,13 @@
 
 Curso: Ciencias. Mecánica: Memoria de parejas.
 
-| N.º | Duda | Tipo | Supuesto propuesto | Justificación |
+| N.º | Duda | Tipo | Resolución o supuesto permitido | Justificación |
 |---|---|---|---|---|
-| 1 | ¿El niño puede repetir una actividad ya completada? | Vacío | Sí; se conserva el mejor resultado | Refuerza el aprendizaje y no castiga al estudiante por practicar más |
-| 2 | ¿Las cartas de memoria son idénticas o relacionales? | Ambigüedad | Relacionales (asociar concepto de ciencias con imagen o definición) | Aporta mayor valor pedagógico que buscar imágenes duplicadas |
-| 3 | ¿Cómo se distingue a dos niños que eligen el mismo avatar? | Vacío | Cada avatar de la clase se asigna a un solo niño por sesión | Evita colisiones de progreso manteniendo el acceso sin correos |
-| 4 | ¿Existe límite de tiempo o intentos por partida? | Vacío | Sin límite de tiempo; se cuenta el número de intentos para puntuar | Evita frustración en niños y permite resolver a su propio ritmo |
-| 5 | ¿Qué ocurre si el niño abandona una partida a la mitad? | Vacío | Se descarta el intento incompleto y se reinicia al volver | No distorsiona las métricas del curso con partidas inconclusas |
-| 6 | ¿Cómo sabe el docente a qué alumno real corresponde cada avatar? | Contradicción | El docente asigna previamente los avatares a cada alumno en el aula | Permite seguimiento docente sin recopilar datos personales de menores |
-| 7 | ¿El docente puede personalizar las parejas de cartas? | Vacío | No en el prototipo; el contenido vendrá predefinido | Acota el alcance inicial garantizando contenido de ciencias curado |
-| 8 | ¿Cómo se sincroniza el avance si el niño juega sin conexión (PWA)? | Vacío | Se guarda localmente y se envía automáticamente al recuperar conexión | Asegura persistencia sin depender de conectividad constante en el aula |
+| 1 | ¿El niño puede repetir una actividad ya completada? | Parcialmente resuelta | Se permite repetir y cada ejecución completa crea un intento; el mejor resultado no está definido. | Evita declarar una métrica no confirmada por el Anexo A. |
+| 2 | ¿Las cartas son idénticas o relacionales? | Resuelta | Relacionales: enunciado y respuesta correcta forman una pareja. | Respuesta directa del Anexo A. |
+| 3 | ¿Cómo se distingue a dos niños que eligen el mismo avatar? | Resuelta por el modelo | El alias identifica al niño; el avatar es una preferencia visual. | El Anexo permite elegir uno de 6 avatares sin prohibir coincidencias. |
+| 4 | ¿Existe límite de tiempo o intentos por partida? | Pendiente | No se fija límite en el MVP. | No introducir restricciones no solicitadas. |
+| 5 | ¿Qué ocurre si el niño abandona una partida a la mitad? | Resuelta parcialmente | No se crea intento ni se modifica el progreso agregado. | El Anexo define el intento solo al terminar una actividad completa. |
+| 6 | ¿Cómo sabe el docente a qué alumno real corresponde cada alias? | Pendiente | La relación se mantiene fuera del prototipo para evitar datos personales. | El Anexo exige seguimiento mediante alias sin datos personales reales. |
+| 7 | ¿El docente puede personalizar las parejas de cartas? | Resuelta | No en el prototipo; el contenido viene predefinido. | Respuesta directa del Anexo A. |
+| 8 | ¿Cómo se sincroniza el avance si el niño juega sin conexión (PWA)? | Pendiente | No se implementa sincronización adicional en el MVP. | Evita asumir persistencia local y reenvío automático. |
