@@ -32,19 +32,19 @@ erDiagram
         int id PK
         int clase_id FK
         string titulo
-        datetime creado_en
+        string creado_en
     }
     PREGUNTA {
         int id PK
         int actividad_id FK
         string enunciado
-        datetime creado_en
+        string creado_en
     }
     OPCION {
         int id PK
         int pregunta_id FK
         string texto
-        bool es_correcta
+        boolean es_correcta
     }
     INTENTO {
         int id PK
@@ -53,7 +53,7 @@ erDiagram
         int aciertos
         int total
         int duracion_segundos
-        datetime creado_en
+        string creado_en
     }
     CONTADOR_PAREJA {
         int id PK
